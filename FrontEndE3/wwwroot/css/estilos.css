@@ -1,0 +1,129 @@
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+}
+
+#footer {
+    padding: 20px;
+    color: white;
+}
+
+#footer a {
+    color: white;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#footer ul li {
+    list-style: none;
+    font-size: 12px;
+    padding: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Arial Black', Arial, Helvetica, sans-serif !important;
+}
+
+h1 {
+    font-size: 28px !important;
+}
+
+h2 {
+    font-size: 24px !important;
+}
+
+h3 {
+    font-size: 20px !important;
+}
+
+h4 {
+    font-size: 16px !important;
+}
+
+h5 {
+    font-size: 14px !important;
+}
+
+p {
+    font-size: 14px !important;
+    text-align: justify !important;
+}
+
+.nombreEmpresa {
+    font-size: 34px !important;
+    padding-top: 40px;
+}
+
+.logo {
+    height: 120px;
+}
+
+.productosdestacados {
+    text-align: center;
+}
+
+.productosdestacados .producto {
+    width: 150px;
+    overflow-x: hidden;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.productosdestacados .producto img {
+    height: 120px;
+}
+
+#sidemenu {
+    color: white;
+    padding: 10px 25px 10px 25px;
+}
+
+#sidemenu a {
+    color: white;
+    text-decoration: none;
+}
+
+#sidemenu a:hover {
+    text-decoration: underline;
+}
+
+#zonaproductos .producto {
+    text-align: center;
+}
+
+#zonaproductos .producto img {
+    height: 200px;
+    max-width: 100%;
+}
+
+#zonaproductos .tituloProducto {
+    font-weight: bold;
+    padding: 5px;
+    border-top: solid thin #6c757d;
+}
+
+#zonaproductos .precioproducto {
+    background-color: #6c757d;
+    color: white;
+    text-align: right;
+    padding: 5px;
+    display: block;
+    text-decoration: none;
+}
+
+.fondo-oscuro {
+    background-color: #333 !important;
+}

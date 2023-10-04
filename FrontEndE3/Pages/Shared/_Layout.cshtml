@@ -1,0 +1,161 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - Supermercado ABC</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/estilos.css">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid" id="header">
+        <div class="row">
+            <div class="col-12 col-sm-3 col-md-2">
+                <img src="/images/logo.png" class="logo">
+            </div>
+            <div class="col-12 col-sm-6 col-md-8">
+                <h1 class="nombreEmpresa">Supermercado ABC</h1>
+            </div>
+            <div class="col-12 col-sm-12 col-md-2">
+                <div class="btn-group">
+                    <a class="btn btn-secondary" href="https://faceboock.com">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a class="btn btn-secondary" href="https://instagram.com">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                    <a class="btn btn-secondary" href="https://twitter.com">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a class="btn btn-secondary" href="https://youtube.com">
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm fondo-oscuro navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Producto">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Contacto">Contactenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Login">Acceso de Usuario</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <div class="container-fluid fondo-oscuro" id="footer">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <ul>
+                    <li>
+                        <a asp-page="Nosotros">Nosotros</a>
+                    </li>
+                    <li>
+                        <a asp-page="Contacto">Contáctenos</a>
+                    </li>
+                    <li>
+                        <a href="">Trabaje con nosotros</a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <ion-icon name="logo-whatsapp"></ion-icon>
+                            <span>300 000 0000</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <ul>
+                    <li>
+                        <a href="">Mapa del sitio</a>
+                    </li>
+                    <li>
+                        <a href="">Política de privacidad</a>
+                    </li>
+                    <li>
+                        <a href="">PQR</a>
+                    </li>
+                    <li>
+                        <a href="">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+                <div class="mapouter">
+                    <div class="mapouter">
+                        <div class="gmap_canvas">
+                            <iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no"
+                                    marginheight="0" marginwidth="0"
+                                    src="https://maps.google.com/maps?width=400&amp;height=200&amp;hl=en&amp;q=Politécnico Grancolombiano Bogotá&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://connectionsgame.org/">Connections NYT</a>
+                        </div>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                width: 100%;
+                                height: 200px;
+                            }
+
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                width: 100%;
+                                height: 200px;
+                            }
+
+                            .gmap_iframe {
+                                height: 200px !important;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 col-md-2">
+                <ul>
+                    <li>
+                        Nuestras sedes:
+                    </li>
+                    <li>
+                        Calle 00 # 00-00
+                    </li>
+                    <li>
+                        Centro Comercial ABC Local 000
+                    </li>
+                    <li>
+                        Vía xtz km 2000
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/app.js"></script>
+
+</body>
+
+</html>
