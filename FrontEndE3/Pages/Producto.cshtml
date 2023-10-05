@@ -6,90 +6,79 @@
     Layout = "_Layout";
 }
 
-<div class="row">
-    <div class="col-12 col-sm-4 col-md-4 col-lg-3 fondo-oscuro" id="sidemenu">
-        <h4>Categorías</h4>
-        <ul>
-            <li>
-                <a href="">Categoría A</a>
-            </li>
-            <li>
-                <a href="">Categoría B</a>
-            </li>
-            <li>
-                <a href="">Categoría C</a>
-            </li>
-            <li>
-                <a href="">Categoría D</a>
-            </li>
-        </ul>
-        <h4>Filtro</h4>
-        <table style="width: 100%;">
-            <tr>
-                <td colspan="2">
-                    Precio:
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="txDesdePrecio">Desde:</label>
-                </td>
-                <td>
-                    <input type="number" class="form-control" id="txDesdePrecio">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="txHastaPrecio">Hasta:</label>
-                </td>
-                <td>
-                    <input type="number" class="form-control" id="txHastaPrecio">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: right;">
-                    <a href="" class="btn btn-secondary">Filtrar</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-12 col-sm-6 col-md-8 col-lg-9" id="zonaproductos">
-
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 producto">
-                <img src="images/detergente.png">
-                <div class="tituloProducto">Detergente X</div>
-                <a class="precioproducto">
-                    <ion-icon name="cart-outline" style="float: left;"></ion-icon>
-                    <span>$12.000</span>
-                </a>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 producto">
-                <img src="images/leche.jpg">
-                <div class="tituloProducto">Leche M</div>
-                <a class="precioproducto">
-                    <ion-icon name="cart-outline" style="float: left;"></ion-icon>
-                    <span>$4.000</span>
-                </a>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 producto">
-                <img src="images/papas.png">
-                <div class="tituloProducto">Papas fritas Z</div>
-                <a class="precioproducto">
-                    <ion-icon name="cart-outline" style="float: left;"></ion-icon>
-                    <span>$2.000</span>
-                </a>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 producto">
-                <img src="images/tomate.jpg">
-                <div class="tituloProducto">Tomate en bolsa</div>
-                <a class="precioproducto">
-                    <ion-icon name="cart-outline" style="float: left;"></ion-icon>
-                    <span>$4.000</span>
-                </a>
-            </div>
+<div id="app">
+    <div class="row">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-3 fondo-oscuro" id="sidemenu">
+            <h4>Categorías</h4>
+            <ul class="lista-categoria">
+                <li v-bind:class="idCategoria==null?'activo':''">
+                    <a v-on:click="seleccionaCategoria(null)">Todas</a>
+                </li>
+                <li v-for="c in categorias" v-bind:class="c.id==idCategoria?'activo':''">
+                    <a v-on:click="seleccionaCategoria(c.id)">{{c.nombre}}</a>
+                </li>
+            </ul>
+            <h4>Filtro</h4>
+            <table style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <h4>Buscar:</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" placeholder="Buscar producto" class="form-control" v-model="buscar" id="txBuscarProducto" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h4>Precio:</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="txDesdePrecio">Desde:</label>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" id="txDesdePrecio" v-model="desdePrecio">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="txHastaPrecio">Hasta:</label>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" id="txHastaPrecio" v-model="hastaPrecio">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <a class="btn btn-secondary" v-on:click="limpiarFiltro">Limpiar filtro</a>
+                        <a class="btn btn-secondary" v-on:click="cargarProductos">Filtrar</a>
+                    </td>
+                </tr>
+            </table>
         </div>
+        <div class="col-12 col-sm-6 col-md-8 col-lg-9" id="zonaproductos">
 
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3 producto" v-for="p in productos">
+                    <img v-bind:src="p.imagen">
+                    <div class="tituloProducto">{{p.nombre}}</div>
+                    <a class="precioproducto">
+                        <ion-icon name="cart-outline" style="float: left;"></ion-icon>
+                        <span>$ {{p.precio.toLocaleString()}}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
+    <hr>
 </div>
-<hr>
+
+<script>
+    $(document).ready(() => {
+        globalThis.app = crearAppProductos();
+    })
+</script>

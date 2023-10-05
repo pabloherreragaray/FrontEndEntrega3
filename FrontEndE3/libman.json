@@ -16,6 +16,13 @@
         "js/bootstrap.min.js",
         "css/bootstrap.min.css"
       ]
+    },
+    {
+      "library": "vue@2.7.14",
+      "destination": "wwwroot/lib/vue/",
+      "files": [
+        "vue.min.js"
+      ]
     }
   ]
 }

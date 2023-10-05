@@ -61,4 +61,43 @@ function ApiClient() {
     }
 }
 
-globalThis.api = new ApiClient();
+function crearAppProductos() {
+    return new Vue({
+        el: '#app',
+        data: {
+            categorias: [],
+            productos: [],
+            idCategoria: null,
+            buscar: null,
+            desdePrecio: null,
+            hastaPrecio: null
+        },
+        methods: {
+            cargarCategorias: async function () {
+                this.categorias = await api.getCategorias();
+            },
+            cargarProductos: async function () {
+                this.productos = await api.getProductos(this.idCategoria, this.buscar, this.desdePrecio, this.hastaPrecio, null);
+            },
+            seleccionaCategoria: async function (id) {
+                this.idCategoria = id;
+                await this.cargarProductos();
+            },
+            limpiarFiltro: async function () {
+                this.idCategoria = null;
+                this.buscar = null;
+                this.desdePrecio = null;
+                this.hastaPrecio = null;
+                await this.cargarProductos();
+            }
+        },
+        mounted: function () {
+            Promise.all([
+                this.cargarCategorias(),
+                this.cargarProductos()
+            ])
+        }
+    })
+}
+
+var api = new ApiClient();
