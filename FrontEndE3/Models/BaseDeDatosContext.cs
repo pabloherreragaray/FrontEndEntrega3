@@ -17,6 +17,8 @@ public partial class BaseDeDatosContext : DbContext
 
     public virtual DbSet<Producto> Producto { get; set; }
 
+    public virtual DbSet<Usuario> Usuario { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Categoria>(entity =>
@@ -39,6 +41,19 @@ public partial class BaseDeDatosContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Precio).HasColumnType("decimal(18, 2)");
+        });
+
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.HasKey(e => e.NombreUsuario).HasName("PK__Usuario__6B0F5AE1F432D9ED");
+
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Clave)
+                .IsRequired()
+                .HasMaxLength(100)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);

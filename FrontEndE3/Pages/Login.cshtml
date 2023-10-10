@@ -6,31 +6,42 @@
     Layout = "_Layout";
 }
 
-<br />
-<div class="row">
-    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-        <div class="card">
-            <div class="card-header" style="text-align: center;">
-                <h3>Acceso de administrador</h3>
-            </div>
-            <div class="card-body">
-
-                <div class="row">
-                    <div class="col-12">
-                        <label for="txNombreUsuario">Nombre de usuario:</label>
-                        <input type="text" class="form-control" id="txNombreUsuario">
-                    </div>
-                    <div class="col-12">
-                        <label for="txContrasena">Contraseña:</label>
-                        <input type="password" class="form-control" id="txContrasena">
-                    </div>
+<div id="app">
+    <br />
+    <div class="row">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <h3>Acceso de administrador</h3>
                 </div>
+                <div class="card-body">
 
-            </div>
-            <div class="card-footer" style="text-align: center;">
-                <a href="" class="btn btn-secondary">Acceder</a>
+                    <div class="alert alert-danger" v-if="mensaje&&!ok">{{mensaje}}</div>
+                    <div class="alert alert-success" v-if="ok">Acceso correcto</div>
+
+                    <div class="row" v-if="!ok">
+                        <div class="col-12">
+                            <label for="txNombreUsuario">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="txNombreUsuario" v-model="nombreUsuario">
+                        </div>
+                        <div class="col-12">
+                            <label for="txContrasena">Contraseña:</label>
+                            <input type="password" class="form-control" id="txContrasena" v-model="contrasena">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer" style="text-align: center;">
+                    <a v-on:click="acceder" class="btn btn-secondary">Acceder</a>
+                </div>
             </div>
         </div>
     </div>
+    <br />
 </div>
-<br />
+
+<script>
+    $(document).ready(() => {
+        globalThis.app = crearAppLogin();
+    })
+</script>

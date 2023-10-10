@@ -22,6 +22,10 @@
       {
          "Name": "[dbo].[Producto]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Usuario]",
+         "ObjectType": 0
       }
    ],
    "UiHint": "act005729\\localdb#9eb53368.BaseDeDatos.dbo",

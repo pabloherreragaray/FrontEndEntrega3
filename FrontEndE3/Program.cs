@@ -33,6 +33,11 @@ app.MapGet("/Api/Categoria", async (BaseDeDatosContext con) =>
     return categorias;
 });
 
+app.MapGet("/Api/Login", async (BaseDeDatosContext con, [FromQuery] string? nombreUsuario, [FromQuery] string? contrasena) =>
+{
+    return await con.Usuario.Where(u => u.NombreUsuario == nombreUsuario && u.Clave == contrasena).AnyAsync();
+});
+
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 
